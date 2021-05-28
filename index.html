@@ -29,7 +29,7 @@
     prefix: 'terminal@caozhiming.tk: ~ <d color="#00f501">$</d> ',
 
     // Welcome Message
-    welcome: `欢迎来到本命令行终端。`,
+    welcome: `欢迎来到曹智铭的命令行终端。`,
 
     // Loading tips
     loading: (val) => '<d color="yellow">正在加载中……</d>',
@@ -83,7 +83,23 @@
                 }.call(this));
             },
         },
+        {
+            input: 'index',
+            output: '链接：\n<d href="http://blog.caozhiming.tk/">我的博客</d>\n<d href="https://github.com/cao-zhiming">我的GitHub</d>\n<d href="https://blog.caozhiming.tk/links/>友情链接</d>"',
+        },
+        {
+            input: '索引',
+            output: '链接：\n<d href="http://blog.caozhiming.tk/">我的博客</d>\n<d href="https://github.com/cao-zhiming">我的GitHub</d>\n<d href="https://blog.caozhiming.tk/links/>友情链接</d>"',
+        },
+        {
+            // Loading
+            input: '帮助',
+            output:
+                '以下是可用的指令列表：\n<d color="yellow">你好</d> - 问候你\n<d color="yellow">ip</d> - 显示你的IP\n<d color="yellow">加载</d> - 显示一个进度条\n<d color="yellow">索引</d>或<d color="yellow">index</d> - 显示一些有用的相关链接。\n',
+        },
       ],});
       
-      term.type('你好');</script><noscript>抱歉，本程序需要JavaScript才能运行，但是你的浏览器目前似乎无法运行JavaScript。请打开JavaScript或使用其它浏览器。</noscript>
+      term.type('你好');
+      term.type('帮助');
+    </script><noscript>抱歉，本程序需要JavaScript才能运行，但是你的浏览器目前似乎无法运行JavaScript。请打开JavaScript或使用其它浏览器。</noscript>
   </body></html>

@@ -1,0 +1,89 @@
+<html><head><meta charset="utf-8"><title>曹智铭的网站</title></head><body>
+  <script type="text/javascript" src="/dist/term-web.js"></script>
+  <div id="term"></div>
+  <script type="text/javascript">
+    var term = new Term({
+    container: '#term',
+    width: 900,
+    height: 600,
+    draggable: true,
+
+    // Font size
+    fontSize: 16,
+
+    fontFamily: 'monospace',
+
+    // Watermark image url
+    watermark: '',
+
+    // Font color
+    color: '#b0b2b6',
+
+    // Background color
+    background: 'rgb(42, 39, 52)',
+
+    // Title on the topbar
+    title: '曹智铭的网站-命令行终端',
+
+    // Entered prefix
+    prefix: 'terminal@caozhiming.tk: ~ <d color="#00f501">$</d> ',
+
+    // Welcome Message
+    welcome: `欢迎来到本命令行终端。`,
+
+    // Loading tips
+    loading: (val) => '<d color="yellow">正在加载中……</d>',
+
+    // Pixel ratio
+    pixelRatio: window.devicePixelRatio,
+
+    // Callback when command is not found
+    notFound: (val) => `曹智铭的终端错误：找不到"<d color='red'>${val}</d>"这个指令！`,
+      
+    actions: [
+        {
+            // Automatic input
+            input: '你好',
+            output:
+                '嘿，你好，欢迎来访。',
+        },
+        {
+            // Exact match
+            input: 'hi',
+            output: "<d color='yellow'>哈喽哈喽</d>，你好。",
+        },
+        {
+            // Return your ip
+            input: /^ip$/i,
+            output() {
+                return fetch('https://ipinfo.io/json')
+                    .then((data) => data.json())
+                    .then(JSON.stringify);
+            },
+        },
+      {
+            // Loading
+            input: /^加载$/i,
+            output() {
+                let progress = 0;
+                this.output(`<d color='yellow'>Loading...</d>`);
+                (function loop() {
+                    if (progress >= 100) {
+                        this.output(`<d color='yellow'>Done</d>`, true).input();
+                    } else {
+                        this.output(
+                            `<d color='#00f501'>${progress}% ${'='.repeat(Math.ceil(progress / 5))}></d>`,
+                            true,
+                        );
+                        progress += 1;
+                        setTimeout(() => {
+                            loop.call(this);
+                        }, 100);
+                    }
+                }.call(this));
+            },
+        },
+      ],
+      
+      term.type('你好');</script><noscript>抱歉，本程序需要JavaScript才能运行，但是你的浏览器目前似乎无法运行JavaScript。请打开JavaScript或使用其它浏览器。</noscript>
+  </body></html>
